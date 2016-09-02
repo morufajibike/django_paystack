@@ -4,7 +4,7 @@ A Python/Django app for Paytsack payment
 Dependencies:
 <p>
 <ol>
-  cffi==1.7.0
+    <li>cffi==1.7.0</li>
     <li>cryptography==1.5</li>
     <li>Django==1.10</li>
     <li>enum34==1.1.6</li>
