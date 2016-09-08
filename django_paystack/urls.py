@@ -7,6 +7,5 @@ urlpatterns = [
     
     url(r'^admin/', include(admin.site.urls)),
     
-    url(r'^payment/', include('test_payment.urls')),
-    
+    url(r'^payment/', include('test_payment.urls', namespace="payment")),
 ]

@@ -1,54 +1,67 @@
-{% extends 'bvn/base.html' %}    
+{% extends 'payment/base.html' %}    
         
 {% block page_title %}
-    <title>BVN Validator - Validation Information</title>
+    <title>Paystack Payment - Transaction Information</title>
 {% endblock page_title %}
 
 {% block container_content %}
 <form class="form-signin"  method="POST" action="">
 {% csrf_token %}
   
-  <h3 class="form-signin-heading text-center">BVN Verification Information</h3>
+  <div class="text-center">
+      <h3 class="form-signin-heading">Transaction Information</h3>
   
-  <h5 class="text-success">Please find below the result of your BVN Verification</h5>
+      <h5>Please find below the result of your transaction</h5>
+      
+      {% if message %}
+          <h5 class="form-signin-heading text-success">{{ message }}</h5>
+      {% endif %}
+  </div>
+  
   
   <div class="table-responsive">
         <table class="table table-bordered">
               <tr>
-                <td>BVN Number</td>
-                <td>{{ data.bvn }}</td>
+                <td>Customer Code</td>
+                <td>{{ customer_data.customer_code }}</td>
               </tr>
               
               <tr>
                 <td>First Name</td>
-                <td>{{ data.firstName }}</td>
-              </tr>
-              
-              <tr>
-                <td>Middle Name</td>
-                <td>{{ data.lastName }}</td>
+                <td>{{ customer_data.first_name }}</td>
               </tr>
               
               <tr>
                 <td>Last Name</td>
-                <td>{{ data.lastName }}</td>
+                <td>{{ customer_data.last_name }}</td>
               </tr>
               
               <tr>
-                <td>Date of Birth</td>
-                <td>{{ data.dateOfBirth }}</td>
+                <td>Amount</td>
+                <td>{{ data.amount }}</td>
               </tr>
               
               <tr>
-                <td>Phone Number</td>
-                <td>{{ data.phoneNumber }}</td>
+                <td>Transaction Reference</td>
+                <td>{{ data.reference }}</td>
               </tr>
+              
+              <tr>
+                <td>Transaction Date</td>
+                <td>{{ data.transaction_date }}</td>
+              </tr>
+
+              <tr>
+                <td>Email</td>
+                <td>{{ customer_data.email }}</td>
+              </tr>
+              
             
         </table>
   </div>
   
   <div class="row-fluid text-center">
-      <a href="{% url 'verify_bvn' %}"><h5>Verify Another BVN</h5></a>
+      <a href="{% url 'payment:start' %}"><h5>Try Another Transaction</h5></a>
   </div>
   
 
